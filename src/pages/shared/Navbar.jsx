@@ -49,9 +49,9 @@ const Navbar = () => {
                 {navLinks}
               </ul>
             </div>
-            <div className="flex items-center justify-center font-mono">
+            <div className="flex items-center justify-center gap-1 font-mono">
               <img className="w-7 h-7" src={houseIcon} alt="" />
-              <Link to={"/"} className="text-xl">
+              <Link to={"/"} className="text-xl sm:text-2xl min-w-max">
                 House Hunter
               </Link>
             </div>
