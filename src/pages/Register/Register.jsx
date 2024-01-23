@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { MdErrorOutline } from "react-icons/md";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const {
@@ -13,14 +14,17 @@ const Register = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    console.log(data);
     axiosPublic
       .post("/register", data)
       .then((res) => {
-        console.log(res);
+        if (res.status === 201) {
+          toast.success("Successfully registered!");
+          navigate("/");
+        }
       })
       .catch((error) => {
-        console.log(error);
+        if (error?.response?.data?.error)
+          toast.error(error?.response?.data?.error);
       });
   };
 
