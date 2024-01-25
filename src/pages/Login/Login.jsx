@@ -15,16 +15,15 @@ const Login = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    console.log(data);
-
     axiosPublic
       .post("/login", data)
       .then((res) => {
         if (res.status === 200) {
           toast.success("Log In Successfully!");
-          console.log(res?.data);
           localStorage.setItem("accessToken", res?.data?.accessToken);
           //   navigate("/");
+          // const accessToken = localStorage.getItem("accessToken");
+          // console.log({ accessToken });
         }
       })
       .catch((error) => {
